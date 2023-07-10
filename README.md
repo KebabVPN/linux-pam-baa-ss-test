@@ -26,3 +26,9 @@ STOPMODE=manual XAUTHPAM=login docker-compose up --remove-orphans --force-recrea
 #
 touch share/kill
 ```
+
+## Update
+
+```
+git submodule update --remote
+```
