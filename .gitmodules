@@ -1,0 +1,3 @@
+[submodule "server/pam-baa"]
+	path = server/pam-baa
+	url = https://github.com/KebabVPN/linux-pam-baa.git

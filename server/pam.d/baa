@@ -1,0 +1,3 @@
+#%PAM-1.0
+auth		requisite			/usr/lib/pam_baa.so
+account		required			/usr/lib/pam_baa.so

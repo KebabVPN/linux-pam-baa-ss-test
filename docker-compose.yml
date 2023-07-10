@@ -1,0 +1,41 @@
+version: '2.1'
+
+x-common: &common
+  image: linux-pam-baa-ss-test
+  privileged: true
+  command: ./run.sh ${XAUTHPAM:-baa}
+  environment:
+    - STOPMODE=${STOPMODE:-auto}
+    - XAUTHPAM=${XAUTHPAM:-baa}
+
+services:
+  server:
+    <<: *common
+    build: server
+    container_name: server.tastevpn.domain
+    volumes:
+      - ./tools:/baa/tools
+      - ./utils:/baa/utils
+      - ./share:/baa/share
+      - ./server/run.sh:/baa/run.sh
+      - ./server/pam.d/custom-allow:/etc/pam.d/custom-allow
+      - ./server/pam.d/custom-deny:/etc/pam.d/custom-deny
+      - ./server/pam.d/baa:/etc/pam.d/baa
+      - ./server/conf-${XAUTHPAM:-baa}/ipsec.conf:/etc/ipsec.conf
+      - ./server/conf-${XAUTHPAM:-baa}/ipsec.secrets:/etc/ipsec.secrets
+      - ./server/conf-${XAUTHPAM:-baa}/eap-gtc.conf:/etc/strongswan.d/charon/eap-gtc.conf
+      - ./server/conf-${XAUTHPAM:-baa}/xauth-pam.conf:/etc/strongswan.d/charon/xauth-pam.conf
+      - ./server/conf-${XAUTHPAM:-baa}/_run.sh:/baa/_run-${XAUTHPAM:-baa}.sh
+
+  client:
+    <<: *common
+    build: client
+    container_name: client.tastevpn.domain
+    volumes:
+      - ./tools:/baa/tools
+      - ./utils:/baa/utils
+      - ./share:/baa/share
+      - ./client/run.sh:/baa/run.sh
+      - ./client/conf-${XAUTHPAM:-baa}/ipsec.conf:/etc/ipsec.conf
+      - ./client/conf-${XAUTHPAM:-baa}/ipsec.secrets:/etc/ipsec.secrets
+      - ./client/conf-${XAUTHPAM:-baa}/_run.sh:/baa/_run-${XAUTHPAM:-baa}.sh
