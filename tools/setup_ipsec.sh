@@ -29,8 +29,8 @@ pki --issue \
     --lifetime 1825 \
     --cacert /etc/ipsec.d/cacerts/ca-cert.pem \
     --cakey /etc/ipsec.d/private/ca-key.pem \
-    --dn "CN=server.tastevpn.domain" \
-    --san server.tastevpn.domain \
+    --dn "CN=server.kebabvpn.domain" \
+    --san server.kebabvpn.domain \
     --flag serverAuth \
     --flag ikeIntermediate \
     --outform pem \

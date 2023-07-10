@@ -12,7 +12,7 @@ services:
   server:
     <<: *common
     build: server
-    container_name: server.tastevpn.domain
+    container_name: server.kebabvpn.domain
     volumes:
       - ./tools:/baa/tools
       - ./utils:/baa/utils
@@ -30,7 +30,7 @@ services:
   client:
     <<: *common
     build: client
-    container_name: client.tastevpn.domain
+    container_name: client.kebabvpn.domain
     volumes:
       - ./tools:/baa/tools
       - ./utils:/baa/utils
