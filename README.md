@@ -6,6 +6,8 @@
 git clone --recurse-submodules https://github.com/KebabVPN/linux-pam-baa-ss-test.git
 
 docker build server/pam-baa -t linux-pam-baa
+
+docker-compose build
 ```
 
 ## Build & Run
@@ -14,19 +16,23 @@ docker build server/pam-baa -t linux-pam-baa
 #
 # run tests and exit
 #
-XAUTHPAM=login docker-compose up --remove-orphans --force-recreate
-
 XAUTHPAM=baa docker-compose up --remove-orphans --force-recreate
 
 #
-# optional mode to keep containers up and running
+# optional modes
 #
-STOPMODE=manual XAUTHPAM=login docker-compose up --remove-orphans --force-recreate
+STOPMODE=manual XAUTHPAM=baa docker-compose up --remove-orphans --force-recreate
+
+# manual stop:
+touch share/kill
 
 #
-# manual stop
+# XAUTHPAM values:
+# baa (default, basic auth test)
+# login (login, system login credentials test)
+# deny (always deny)
 #
-touch share/kill
+
 ```
 
 ## Update
