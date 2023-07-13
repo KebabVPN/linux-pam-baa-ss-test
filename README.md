@@ -32,5 +32,5 @@ touch share/kill
 ## Update
 
 ```
-git submodule update --remote --recursive
+git submodule update --remote
 ```
