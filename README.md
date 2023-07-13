@@ -4,6 +4,8 @@
 
 ```
 git clone --recurse-submodules https://github.com/KebabVPN/linux-pam-baa-ss-test.git
+
+docker build server/pam-baa -t linux-pam-baa
 ```
 
 ## Build & Run
@@ -30,5 +32,5 @@ touch share/kill
 ## Update
 
 ```
-git submodule update --remote
+git submodule update --remote --recursive
 ```

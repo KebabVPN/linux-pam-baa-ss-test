@@ -7,6 +7,9 @@ $t cp $SHARE_DIR/ca-cert.pem /etc/ipsec.d/cacerts/ca-cert.pem
 $t ping -c 1 server.kebabvpn.domain
 
 $t ./tools/start_service.sh           ipsec
+
+sleep 2
+
 $t ./tools/test_command_5s.sh         ipsec status
 
 $t ./tools/check_port_opened.sh       4500 charon 2
