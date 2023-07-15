@@ -5,6 +5,8 @@
 ```
 git clone --recurse-submodules https://github.com/KebabVPN/linux-pam-baa-ss-test.git
 
+cd linux-pam-baa-ss-test
+
 docker build server/pam-baa -t linux-pam-baa
 
 docker-compose build
