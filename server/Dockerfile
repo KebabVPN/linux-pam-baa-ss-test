@@ -1,5 +1,7 @@
 FROM linux-pam-baa AS pam-baa
 
+RUN ls -al /usr/lib/pam_baa.so
+
 FROM ubuntu:20.04
 
 ENV DEBIAN_FRONTEND=noninteractive

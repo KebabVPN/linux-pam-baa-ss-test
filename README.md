@@ -42,3 +42,10 @@ touch share/kill
 ```
 git submodule update --remote --recursive
 ```
+
+## Re-init submodules
+
+```
+git submodule deinit -f .
+git submodule update --init --recursive
+```
